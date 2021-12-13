@@ -118,10 +118,12 @@ It prints how many system―those from the packages java.*―and user-defined cl
 It raises a RuntimeException when there is an attempt to use one of the classes defined into the java.lang and java.util packages. Note that the JVM pre-loads many of the classes from these packages and this can distort the final result of your program: let's find a way to take rid of such a behavior.
 
 # 9. Byte Code Engineering
-The standard StringBuilder class provides, among the others, the methods
+The standard `StringBuilder` class provides, among the others, the methods:
+- `StringBuilder append(char[] str)` that appends the string passed as an argument to the StringBuilder and
+- `StringBuilder insert(int offset, String str)` that inserts the string passed as an argument into the StringBuilder at the specified position.
 
-StringBuilder append(char[] str) that appends the string passed as an argument to the StringBuilder and
-StringBuilder insert(int offset, String str) that inserts the string passed as an argument into the StringBuilder at the specified position.
-By using BCEL, inject in these methods the code needed to measure how long it takes to do the append/insert. Then write a main class that checks if the append method takes more than the insert method to append a given string to the end. Note, subclassing can be a viable option to solve the exercise (not the only one).
+By using **BCEL**, inject in these methods the code needed to measure how long it takes to do the `append`/`insert`. Then write a main class that checks if the append method takes more than the insert method to append a given string to the end. 
 
-Repeat the exercise by using Javassist.
+**Note:** subclassing can be a viable option to solve the exercise (not the only one).
+
+Repeat the exercise by using **Javassist**.
